@@ -8,3 +8,12 @@ services:
       site.kind: zdx-docs
     expose:
       - "80"
+    networks:
+      dockerwp:
+        aliases:
+          - docs-tigrbl-com
+
+networks:
+  dockerwp:
+    name: dockerwp
+    external: true
