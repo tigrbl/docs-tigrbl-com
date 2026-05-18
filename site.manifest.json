@@ -1,0 +1,18 @@
+{
+  "host": "docs.tigrbl.com",
+  "zone": "tigrbl.com",
+  "repository": "tigrbl/docs-tigrbl-com",
+  "siteKind": "zdx-docs",
+  "orchestrator": "npmctl",
+  "dnsProvider": "namecheap",
+  "deployment": "self-hosted-docker",
+  "dockerService": "docs-tigrbl-com",
+  "records": [
+    {
+      "type": "CNAME",
+      "host": "docs",
+      "value": "docs.tigrbl.com",
+      "ttl": 300
+    }
+  ]
+}

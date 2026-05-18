@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "site": "docs.tigrbl.com",
+  "repository": "tigrbl/docs-tigrbl-com",
+  "orchestrator": "npmctl",
+  "dns": {
+    "provider": "namecheap",
+    "zone": "tigrbl.com",
+    "records": [
+      {
+        "type": "CNAME",
+        "host": "docs",
+        "value": "docs.tigrbl.com",
+        "ttl": 300
+      }
+    ]
+  },
+  "deploy": {
+    "target": "self-hosted-docker",
+    "service": "docs-tigrbl-com",
+    "composeFile": "docker-compose.yaml"
+  },
+  "commands": {
+    "install": "npm ci",
+    "check": "npm run check",
+    "build": "npm run build",
+    "docker:build": "docker compose build docs-tigrbl-com",
+    "dns:plan": "node scripts/namecheap-dns.mjs --plan",
+    "deploy:dry-run": "node scripts/deploy.mjs --dry-run",
+    "deploy": "docker compose up -d --build --force-recreate --no-deps docs-tigrbl-com"
+  }
+}
