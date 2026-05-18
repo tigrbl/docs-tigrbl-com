@@ -16,7 +16,8 @@
     "dns:doctor": "npmctl dns doctor --provider namecheap",
     "proxy:validate": "npmctl validate desired-state/proxy.yaml",
     "proxy:plan": "npmctl plan desired-state/proxy.yaml --owner docs-tigrbl-com",
-    "proxy:apply": "npmctl apply desired-state/proxy.yaml --owner docs-tigrbl-com"
+    "proxy:apply": "npmctl apply desired-state/proxy.yaml --owner docs-tigrbl-com",
+    "proxy:target-check": "node scripts/validate-proxy-target.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",
