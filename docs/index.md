@@ -1,11 +1,9 @@
-# Tigrbl Docs
+# Welcome to Tigrbl
 
-Documentation for Tigrbl APIs, contracts, runtime operations, and governed service patterns.
+This site hosts the Tigrbl documentation and resources.
 
-This documentation site is built with ZDX, deployed as the `docs-tigrbl-com` self-hosted Docker service, and published at `https://docs.tigrbl.com`.
+## Sections
 
-## Start here
-
-- [Getting Started](./getting-started.md)
-- [Guides](./guides/index.md)
-- [Reference](./reference/index.md)
+- [Home](home/index.md) – project overview and getting started information
+- [Guide](guide/index.md) – tutorials and walkthroughs
+- [News](news/index.md) – updates and release notes

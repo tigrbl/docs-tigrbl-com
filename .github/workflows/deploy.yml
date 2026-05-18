@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, docker]
+    runs-on: [docs]
     steps:
       - uses: actions/checkout@v4
         with:
