@@ -58,10 +58,13 @@ jobs:
       - name: Validate npmctl proxy desired state
         run: npmctl validate desired-state/proxy.yaml
       - name: Build site image
-        run: docker compose -f docker-compose.yaml build docs-tigrbl-com || docker-compose -f docker-compose.yaml build docs-tigrbl-com
+        run: docker-compose -f docker-compose.yaml build docs-tigrbl-com
       - name: Restart site container
         run: |
-          docker compose -f docker-compose.yaml up -d --build --force-recreate --no-deps docs-tigrbl-com || docker-compose -f docker-compose.yaml up -d --build --force-recreate --no-deps docs-tigrbl-com
+          docker-compose -f docker-compose.yaml stop docs-tigrbl-com || true
+          docker-compose -f docker-compose.yaml rm -f docs-tigrbl-com || true
+          docker rm -f docs-tigrbl-com || true
+          docker-compose -f docker-compose.yaml up -d --no-build --force-recreate --no-deps docs-tigrbl-com
       - name: Check Nginx Proxy Manager API schema
         continue-on-error: true
         run: npmctl schema check
