@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "site": "docs.tigrbl.com",
   "repository": "tigrbl/docs-tigrbl-com",
-  "orchestrator": "npmctl",
+  "orchestrator": "npmctl-pypi",
   "dns": {
     "provider": "namecheap",
     "zone": "tigrbl.com",
@@ -10,10 +10,11 @@
       {
         "type": "CNAME",
         "host": "docs",
-        "value": "docs.tigrbl.com",
+        "value": "nginx.bz23.xyz",
         "ttl": 300
       }
-    ]
+    ],
+    "providerPackage": "npmctl-namecheap"
   },
   "deploy": {
     "target": "self-hosted-docker",
@@ -29,8 +30,22 @@
     "check": "npm run check",
     "build": "npm run build",
     "docker:build": "docker compose build docs-tigrbl-com",
-    "dns:plan": "node scripts/namecheap-dns.mjs --plan",
+    "dns:plan": "npmctl plan desired-state/dns.yaml --owner docs-tigrbl-com",
     "deploy:dry-run": "node scripts/deploy.mjs --dry-run",
-    "deploy": "docker compose up -d --build --force-recreate --no-deps docs-tigrbl-com"
+    "deploy": "docker compose up -d --build --force-recreate --no-deps docs-tigrbl-com",
+    "npmctl:install": "python -m pip install --upgrade npmctl npmctl-namecheap",
+    "npmctl:validate": "npmctl validate desired-state",
+    "npmctl:schema": "npmctl schema check",
+    "dns:doctor": "npmctl dns doctor --provider namecheap",
+    "dns:apply": "npmctl apply desired-state/dns.yaml --owner docs-tigrbl-com",
+    "proxy:validate": "npmctl validate desired-state/proxy.yaml",
+    "proxy:plan": "npmctl plan desired-state/proxy.yaml --owner docs-tigrbl-com",
+    "proxy:apply": "npmctl apply desired-state/proxy.yaml --owner docs-tigrbl-com"
+  },
+  "npmctl": {
+    "package": "npmctl",
+    "dnsProviderPackage": "npmctl-namecheap",
+    "installCommand": "python -m pip install --upgrade npmctl npmctl-namecheap",
+    "proxyManagerApiEndpoint": "https://nginx.bz23.xyz/"
   }
 }

@@ -9,13 +9,14 @@
     "check": "node scripts/check-docs.mjs",
     "preview": "vite preview --host 0.0.0.0",
     "docker:build": "docker compose build docs-tigrbl-com",
-    "dns:plan": "node scripts/namecheap-dns.mjs --plan",
-    "dns:apply": "node scripts/namecheap-dns.mjs --apply",
+    "dns:plan": "npmctl plan desired-state/dns.yaml --owner docs-tigrbl-com",
+    "dns:apply": "npmctl apply desired-state/dns.yaml --owner docs-tigrbl-com",
     "deploy:dry-run": "node scripts/deploy.mjs --dry-run",
     "deploy": "docker compose -f docker-compose.yaml up -d --build --force-recreate --no-deps docs-tigrbl-com",
-    "npmctl:install": "npmctl install",
-    "npmctl:check": "npmctl check",
-    "npmctl:build": "npmctl build"
+    "dns:doctor": "npmctl dns doctor --provider namecheap",
+    "proxy:validate": "npmctl validate desired-state/proxy.yaml",
+    "proxy:plan": "npmctl plan desired-state/proxy.yaml --owner docs-tigrbl-com",
+    "proxy:apply": "npmctl apply desired-state/proxy.yaml --owner docs-tigrbl-com"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",

@@ -1,0 +1,14 @@
+---
+apiVersion: npmctl.com/v1
+schemaVersion: 2
+dns_records:
+  - provider: namecheap
+    zone: tigrbl.com
+    type: CNAME
+    name: "docs"
+    value: nginx.bz23.xyz
+    ttl: 300
+    meta:
+      managed_by: npmctl
+      owner: docs-tigrbl-com
+      resource_id: dns.docs-tigrbl-com.docs-cname
