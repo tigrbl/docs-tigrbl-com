@@ -16,15 +16,15 @@ jobs:
   dns:
     runs-on: deployment
     env:
-      NPM_BASE_URL: ${{ vars.NPM_BASE_URL || 'https://nginx.bz23.xyz/api' }}
-      NPM_IDENTITY: jacob@groupsum.xyz
-      NPM_SECRET: ${{ secrets.NPM_SECRET || secrets.NPM_PASSWORD || secrets.NGINX_PROXY_MANAGER_SECRET }}
+      NPM_BASE_URL: ${{ secrets.NPM_BASE_URL }}
+      NPM_IDENTITY: ${{ secrets.NPM_IDENTITY }}
+      NPM_SECRET: ${{ secrets.NPM_SECRET }}
       NPM_TIMEOUT_S: 30
       NAMECHEAP_API_USER: ${{ secrets.NAMECHEAP_API_USER }}
       NAMECHEAP_API_KEY: ${{ secrets.NAMECHEAP_API_KEY }}
       NAMECHEAP_USERNAME: ${{ secrets.NAMECHEAP_USERNAME }}
       NAMECHEAP_CLIENT_IP: ${{ secrets.NAMECHEAP_CLIENT_IP }}
-      SITE_SERVER_IP: ${{ secrets.SITE_SERVER_IP || secrets.SERVER_IP || secrets.DEPLOY_SERVER_IP }}
+      SITE_SERVER_IP: ${{ secrets.SITE_SERVER_IP }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           if [ -z "${SITE_SERVER_IP}" ]; then
-            echo "Set SITE_SERVER_IP, SERVER_IP, or DEPLOY_SERVER_IP secret for DNS A records."
+            echo "Set SITE_SERVER_IP secret for DNS records."
             exit 1
           fi
           mkdir -p .tmp
