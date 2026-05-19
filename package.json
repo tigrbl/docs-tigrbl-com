@@ -4,10 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "build": "node scripts/build-zdx.mjs",
-    "check": "node scripts/check-docs.mjs",
-    "preview": "vite preview --host 0.0.0.0",
+    "dev": "uv run zdx serve --generate --docs-dir . --manifest api_manifest.yaml --on-error warn",
+    "build": "uv run zdx generate --docs-dir . --manifest api_manifest.yaml --on-error warn && uv run mkdocs build -f mkdocs.yml",
+    "check": "uv run zdx generate --docs-dir . --manifest api_manifest.yaml --on-error warn && uv run mkdocs build -f mkdocs.yml",
     "docker:build": "docker compose build docs-tigrbl-com",
     "dns:plan": "npmctl plan desired-state/dns.yaml --owner docs-tigrbl-com",
     "dns:apply": "npmctl apply desired-state/dns.yaml --owner docs-tigrbl-com",
@@ -18,16 +17,5 @@
     "proxy:plan": "npmctl plan desired-state/proxy.yaml --owner docs-tigrbl-com",
     "proxy:apply": "npmctl apply desired-state/proxy.yaml --owner docs-tigrbl-com",
     "proxy:target-check": "node scripts/validate-proxy-target.mjs"
-  },
-  "dependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "typescript": "^5.8.0"
-  },
-  "devDependencies": {
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
   }
 }

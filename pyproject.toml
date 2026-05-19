@@ -1,11 +1,19 @@
 [project]
 name = "docs-tigrbl-com"
 version = "0.1.0"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 dependencies = []
 
 [dependency-groups]
 dev = [
+    "zdx>=0.2.3",
+    "mkdocs>=1.6.0",
+    "mkdocs-material>=9.6.4,<10.0.0",
+    "mkdocstrings[python]>=0.28.1,<0.29.0",
+    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-literate-nav>=0.6.0",
+    "mkdocs-autorefs>=1.4.0",
+    "griffe-typingdoc>=0.2.8",
     "npmctl>=0.3.10",
     "npmctl-namecheap>=0.3.10",
     "ssot-registry>=0.2.18",

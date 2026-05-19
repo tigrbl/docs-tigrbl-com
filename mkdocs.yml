@@ -73,11 +73,7 @@ plugins:
 markdown_extensions:
 - admonition
 - pymdownx.details
-- pymdownx.superfences:
-    custom_fences:
-    - name: mermaid
-      class: mermaid
-      format: __PYTHON_TAG_0__
+- pymdownx.superfences
 - pymdownx.tabbed:
     alternate_style: true
 - abbr
