@@ -72,7 +72,7 @@ jobs:
       - name: Validate Docker proxy target
         run: npm run proxy:target-check
       - name: Validate npmctl proxy desired state
-        run: npmctl validate desired-state/proxy.yaml
+        run: npmctl validate .tmp/npmctl/proxy.yaml
       - name: Build site image
         run: docker-compose -f docker-compose.yaml build docs-tigrbl-com
       - name: Restart site container
@@ -99,8 +99,8 @@ jobs:
         continue-on-error: true
         run: npmctl schema check
       - name: Adopt matching unmanaged NPM resources
-        run: npmctl adopt desired-state/proxy.yaml --owner docs-tigrbl-com --force
+        run: npmctl adopt .tmp/npmctl/proxy.yaml --owner docs-tigrbl-com --force
       - name: Plan Nginx Proxy Manager host with npmctl
-        run: npmctl plan desired-state/proxy.yaml --owner docs-tigrbl-com
+        run: npmctl plan .tmp/npmctl/proxy.yaml --owner docs-tigrbl-com
       - name: Apply Nginx Proxy Manager host with npmctl
-        run: npmctl apply desired-state/proxy.yaml --owner docs-tigrbl-com
+        run: npmctl apply .tmp/npmctl/proxy.yaml --owner docs-tigrbl-com

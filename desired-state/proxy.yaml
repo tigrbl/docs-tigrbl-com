@@ -1,14 +1,35 @@
 ---
 apiVersion: npmctl.com/v1
 schemaVersion: 2
+certificates:
+  - name: docs-tigrbl-com-letsencrypt
+    domain_names:
+      - docs.tigrbl.com
+    certificate_type: letsencrypt
+    api_payload:
+      provider: letsencrypt
+      meta:
+        letsencrypt_email: "__NPM_IDENTITY__"
+        letsencrypt_agree: true
+        dns_challenge: false
+        managed_by: npmctl
+        owner: docs-tigrbl-com
+        resource_id: cert.docs-tigrbl-com
+    meta:
+      managed_by: npmctl
+      owner: docs-tigrbl-com
+      resource_id: cert.docs-tigrbl-com
 proxy_hosts:
   - domain_names:
       - docs.tigrbl.com
     forward_scheme: http
     forward_host: docs-tigrbl-com
     forward_port: 80
+    certificate_ref: cert.docs-tigrbl-com
     ssl_forced: 1
     http2_support: 1
+    hsts_enabled: 1
+    hsts_subdomains: 0
     allow_websocket_upgrade: 1
     block_exploits: 1
     meta:
