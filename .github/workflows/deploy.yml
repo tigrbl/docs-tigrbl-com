@@ -71,6 +71,11 @@ jobs:
           exit ${missing}
       - name: Validate Docker proxy target
         run: npm run proxy:target-check
+      - name: Render proxy desired state
+        shell: bash
+        run: |
+          mkdir -p .tmp/npmctl
+          sed "s/__NPM_IDENTITY__/${NPM_IDENTITY}/g" desired-state/proxy.yaml > .tmp/npmctl/proxy.yaml
       - name: Validate npmctl proxy desired state
         run: npmctl validate .tmp/npmctl/proxy.yaml
       - name: Build site image

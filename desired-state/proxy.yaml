@@ -12,9 +12,6 @@ certificates:
         letsencrypt_email: "__NPM_IDENTITY__"
         letsencrypt_agree: true
         dns_challenge: false
-        managed_by: npmctl
-        owner: docs-tigrbl-com
-        resource_id: cert.docs-tigrbl-com
     meta:
       managed_by: npmctl
       owner: docs-tigrbl-com
