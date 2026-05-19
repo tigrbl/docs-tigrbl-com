@@ -9,14 +9,14 @@
   "dockerService": "docs-tigrbl-com",
   "records": [
     {
-      "type": "CNAME",
+      "type": "A",
       "host": "docs",
-      "value": "docs.tigrbl.com",
+      "value": "SITE_SERVER_IP_SECRET",
       "ttl": 300
     }
   ],
   "proxyManager": {
     "provider": "nginx-proxy-manager",
-    "apiEndpoint": "https://nginx.bz23.xyz/"
+    "apiEndpoint": "NPM_BASE_URL_SECRET"
   }
 }

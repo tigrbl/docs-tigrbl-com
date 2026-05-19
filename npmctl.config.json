@@ -8,9 +8,9 @@
     "zone": "tigrbl.com",
     "records": [
       {
-        "type": "CNAME",
+        "type": "A",
         "host": "docs",
-        "value": "nginx.bz23.xyz",
+        "value": "SITE_SERVER_IP_SECRET",
         "ttl": 300
       }
     ],
@@ -22,7 +22,7 @@
     "composeFile": "docker-compose.yaml",
     "proxyManager": {
       "provider": "nginx-proxy-manager",
-      "apiEndpoint": "https://nginx.bz23.xyz/api"
+      "apiEndpoint": "NPM_BASE_URL_SECRET"
     }
   },
   "commands": {
@@ -46,6 +46,6 @@
     "package": "npmctl",
     "dnsProviderPackage": "npmctl-namecheap",
     "installCommand": "python -m pip install --upgrade \"npmctl>=0.3.10\" \"npmctl-namecheap>=0.3.10\"",
-    "proxyManagerApiEndpoint": "https://nginx.bz23.xyz/api"
+    "proxyManagerApiEndpoint": "NPM_BASE_URL_SECRET"
   }
 }

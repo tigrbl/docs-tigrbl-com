@@ -4,11 +4,11 @@ schemaVersion: 2
 dns_records:
   - provider: namecheap
     zone: tigrbl.com
-    type: CNAME
+    type: A
     name: "docs"
-    value: nginx.bz23.xyz
+    value: __SITE_SERVER_IP__
     ttl: 300
     meta:
       managed_by: npmctl
       owner: docs-tigrbl-com
-      resource_id: dns.docs-tigrbl-com.docs-cname
+      resource_id: dns.docs-tigrbl-com.docs-a
