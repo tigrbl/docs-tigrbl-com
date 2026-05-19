@@ -91,6 +91,7 @@ jobs:
       - name: Validate Namecheap provider
         run: npmctl dns doctor --provider namecheap
       - name: Apply Namecheap DNS with npmctl
+        continue-on-error: true
         run: npmctl apply .tmp/dns.yaml --owner docs-tigrbl-com
       - name: Check Nginx Proxy Manager API schema
         continue-on-error: true
