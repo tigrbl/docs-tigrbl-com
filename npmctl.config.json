@@ -33,7 +33,7 @@
     "dns:plan": "npmctl plan desired-state/dns.yaml --owner docs-tigrbl-com",
     "deploy:dry-run": "node scripts/deploy.mjs --dry-run",
     "deploy": "docker compose up -d --build --force-recreate --no-deps docs-tigrbl-com",
-    "npmctl:install": "python -m pip install --upgrade npmctl npmctl-namecheap",
+    "npmctl:install": "python -m pip install --upgrade \"npmctl>=0.3.8\" \"npmctl-namecheap>=0.3.8\"",
     "npmctl:validate": "npmctl validate desired-state",
     "npmctl:schema": "npmctl schema check",
     "dns:doctor": "npmctl dns doctor --provider namecheap",
@@ -45,7 +45,7 @@
   "npmctl": {
     "package": "npmctl",
     "dnsProviderPackage": "npmctl-namecheap",
-    "installCommand": "python -m pip install --upgrade npmctl npmctl-namecheap",
+    "installCommand": "python -m pip install --upgrade \"npmctl>=0.3.8\" \"npmctl-namecheap>=0.3.8\"",
     "proxyManagerApiEndpoint": "https://nginx.bz23.xyz/api"
   }
 }
