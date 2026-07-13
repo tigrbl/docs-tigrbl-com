@@ -1,3 +1,5 @@
+[![Managed with npmctl](https://img.shields.io/badge/managed%20with-npmctl-2f6f4e.svg)](https://npmctl.com)
+
 # docs.tigrbl.com
 
 Standalone ZDX documentation repository for [docs.tigrbl.com](https://docs.tigrbl.com).
