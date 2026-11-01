@@ -1,4 +1,5 @@
-FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS build
+FROM python:3.12-slim AS build
+RUN pip install --no-cache-dir uv==0.13.6
 WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --group dev --no-install-project
